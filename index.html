@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter2Video — Multi-Agent AI Video Generation Pipeline</title>
+    <meta name="description"
+        content="Chapter2Video transforms academic PDF chapters into professional narrated lecture videos using a VLM multi-agent pipeline with Gemini, CAMEL-AI, LaTeX Beamer, and Edge-TTS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">C2V</span>
+                <span class="logo-label">Chapter2Video</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#pipeline">Pipeline</a>
+                <a href="#stage-1">Stages</a>
+                <a href="#gallery">Gallery</a>
+                <a href="https://github.com/your-repo/Chapter2Video" target="_blank" class="btn btn-sm btn-white">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"
+                        style="vertical-align:-3px;margin-right:6px;">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                    GitHub
+                </a>
+            </nav>
+            <button class="mobile-toggle" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ═══ HERO ═══ -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge fade-in">Multi-Agent AI Pipeline</div>
+                <h1 class="hero-title fade-in">Transforming Academic PDFs<br>into Professional Video Lectures</h1>
+                <p class="hero-subtitle fade-in">Chapter2Video is a fully autonomous pipeline that converts textbook
+                    chapters into narrated, slide-based lecture videos — powered by Vision-Language Models,
+                    instructional design agents, self-correcting LaTeX, and neural text-to-speech.</p>
+                <div class="hero-tags fade-in">
+                    <span class="tag">Gemini 2.5 Pro VLM</span>
+                    <span class="tag">CAMEL-AI Agents</span>
+                    <span class="tag">LaTeX Beamer</span>
+                    <span class="tag">Edge-TTS</span>
+                    <span class="tag">MoviePy</span>
+                    <span class="tag">PyMuPDF</span>
+                </div>
+
+                <img src="images/image.png" alt="Pipeline Architecture Diagram" class="hero-img fade-in">
+            </div>
+        </section>
+
+        <!-- ═══ OVERVIEW ═══ -->
+        <section id="overview" class="section">
+            <div class="container">
+                <div class="section-label fade-in">OVERVIEW</div>
+                <h2 class="section-title fade-in">Why Chapter2Video?</h2>
+                <p class="section-desc fade-in">The "Content-to-Classroom" bottleneck is real: educators spend hundreds
+                    of hours manually building slide decks and recording lectures. Chapter2Video eliminates this
+                    entirely. Upload a PDF textbook chapter and a table-of-contents index, and the pipeline produces a
+                    fully narrated MP4 video with professional Beamer slides — zero human intervention required.</p>
+
+                <div class="grid-2 mt-6 fade-in">
+                    <div class="card">
+                        <div class="card-icon">📄</div>
+                        <h4>Input</h4>
+                        <p>A textbook chapter PDF and a plain-text <code>index.txt</code> describing the section
+                            hierarchy (e.g., "12.1 Faraday's Law", "12.2 Induced EMF").</p>
+                        <div class="card-img-row mt-3">
+                            <img src="images/zones/section_12.2_p0_Full.png" alt="Extracted PDF Zone"
+                                class="card-thumb">
+                            <img src="images/zones/section_12.3_p1_L.png" alt="Left Column Zone" class="card-thumb">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎬</div>
+                        <h4>Output</h4>
+                        <p>A full-HD (1080p) narrated MP4 video lecture, a compiled PDF slide deck, and all intermediate
+                            JSON artifacts for reproducibility.</p>
+                        <div class="card-img-row mt-3">
+                            <img src="images/slides/figureSlide4.png" alt="Generated Beamer Slide" class="card-thumb">
+                            <img src="images/slides/figureSlide10.png" alt="Figure Slide" class="card-thumb">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-grid mt-6 fade-in">
+                    <div class="feature-item">
+                        <span class="feature-icon">🔬</span>
+                        <strong>LaTeX Fidelity</strong>
+                        <p>Math notation preserved as inline <code>$...$</code> and display <code>$$...$$</code> LaTeX
+                            throughout the pipeline.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧩</span>
+                        <strong>Multi-Agent</strong>
+                        <p>Specialized agents (Dean, Professor, Coder) collaborate via structured JSON contracts.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔄</span>
+                        <strong>Self-Correcting</strong>
+                        <p>LaTeX compilation errors are auto-detected, mapped to frames, and fixed autonomously.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎙️</span>
+                        <strong>Neural Speech</strong>
+                        <p>400+ Edge-TTS neural voices synthesize narration with zero API keys or rate limits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ UI SECTION ═══ -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="section-label fade-in">INTERFACE</div>
+                <h2 class="section-title fade-in">Streamlit Application</h2>
+                <p class="section-desc fade-in">A lightweight Streamlit web app lets you upload your PDF and index file,
+                    monitor progress across all four pipeline stages in real-time, and preview the generated slides and
+                    video directly in the browser.</p>
+                <img src="images/image copy.png" alt="Streamlit Application Screenshot" class="ui-screenshot fade-in">
+            </div>
+        </section>
+
+        <!-- ═══ PIPELINE OVERVIEW ═══ -->
+        <section id="pipeline" class="section">
+            <div class="container">
+                <div class="section-label fade-in">ARCHITECTURE</div>
+                <h2 class="section-title fade-in">Four-Stage Pipeline</h2>
+                <p class="section-desc fade-in">Each stage is a self-contained module with its own agents, data
+                    contracts, and error handling. Stages communicate through structured JSON artifacts, ensuring
+                    modularity and reproducibility.</p>
+
+                <div class="pipeline-strip fade-in">
+                    <a href="#stage-1" class="pipeline-node">
+                        <span class="pn-num">01</span>
+                        <span class="pn-name">PDF Miner</span>
+                        <span class="pn-tech">Gemini VLM · PyMuPDF</span>
+                    </a>
+                    <div class="pipeline-arrow">→</div>
+                    <a href="#stage-2" class="pipeline-node">
+                        <span class="pn-num">02</span>
+                        <span class="pn-name">Virtual Professor</span>
+                        <span class="pn-tech">CAMEL Agents · LLM</span>
+                    </a>
+                    <div class="pipeline-arrow">→</div>
+                    <a href="#stage-3" class="pipeline-node">
+                        <span class="pn-num">03</span>
+                        <span class="pn-name">Slide Builder</span>
+                        <span class="pn-tech">LaTeX Beamer · VLM Judge</span>
+                    </a>
+                    <div class="pipeline-arrow">→</div>
+                    <a href="#stage-4" class="pipeline-node">
+                        <span class="pn-num">04</span>
+                        <span class="pn-name">Video Builder</span>
+                        <span class="pn-tech">Edge-TTS · MoviePy</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+         STAGE 01 — PDF MINER
+    ═══════════════════════════════════════ -->
+        <section id="stage-1" class="section stage-block">
+            <div class="container">
+                <div class="stage-header fade-in">
+                    <div class="stage-number">01</div>
+                    <div>
+                        <h2 class="stage-title">PDF Miner</h2>
+                        <p class="stage-subtitle">High-fidelity extraction of structured text &amp; figures using
+                            Vision-Language Models</p>
+                    </div>
+                </div>
+
+                <div class="stage-meta fade-in">
+                    <div class="meta-chip"><strong>Core Engine:</strong> PDFExtractor</div>
+                    <div class="meta-chip"><strong>VLM Interface:</strong> VLMTranscriber</div>
+                    <div class="meta-chip"><strong>Model:</strong> Gemini 2.5 Pro · PyMuPDF (fitz) · Pillow</div>
+                </div>
+
+                <div class="stage-body">
+
+                    <!-- How It Works -->
+                    <div class="deep-section fade-in">
+                        <h3>How It Works</h3>
+                        <p>Rather than relying on error-prone text-scraping, PDF Miner takes a <strong>VLM-first
+                                approach</strong>: every page zone is rendered as a high-DPI image and fed to
+                            <strong>Gemini 2.5 Pro</strong>, which returns LaTeX-formatted transcriptions with full
+                            mathematical notation. This ensures that dense equations like
+                            <code>$I = I_S(e^{V/nV_T} - 1)$</code> are transcribed exactly as printed.
+                        </p>
+                        <p>The extraction follows a five-step pipeline:</p>
+
+                        <div class="step-list">
+                            <div class="step">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <strong>Index Parsing &amp; Sub-Subsection Discovery</strong>
+                                    <p>Parses <code>index.txt</code> into a section hierarchy. If a parent section
+                                        (e.g., "12.2") has no children listed, the engine auto-discovers sub-subsections
+                                        ("12.2.1", "12.2.2") by scanning PDF text.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <strong>Header Coordinate Detection</strong>
+                                    <p>Regex-matches section IDs on each page, filtering out Table-of-Contents entries
+                                        (lines with "..." and page numbers). Falls back to VLM-based OCR when native
+                                        text search fails on scanned PDFs.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <strong>Column-Aware Zone Extraction</strong>
+                                    <p>Merges text-block intervals to detect vertical gaps, validating two-column
+                                        layouts with ≥50 words on each side and a width ratio &lt;3.0. Zones are clipped
+                                        with 50px margin stripping to exclude headers/footers.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">4</div>
+                                <div class="step-content">
+                                    <strong>VLM Text Transcription</strong>
+                                    <p>Each zone image is transcribed by Gemini, which returns LaTeX with inline
+                                        <code>$...$</code> and block <code>$$...$$</code> notation. The VLM understands
+                                        2D layouts, sidebars, and multi-column reading order. Each section gets a fresh
+                                        VLM instance — no history bleed.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">5</div>
+                                <div class="step-content">
+                                    <strong>Visual-Anchor Figure Extraction</strong>
+                                    <p>Figures are only extracted if a real PDF visual object (vector or raster) is
+                                        detected. The VLM provides bounding boxes in normalized [0–1000] coordinates;
+                                        native PDF objects validate them. Body text above/below is trimmed, background
+                                        colors replaced with white.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Innovations -->
+                    <div class="deep-section fade-in">
+                        <h3>Key Innovations</h3>
+                        <div class="grid-2">
+                            <div class="mini-card">
+                                <h5>🔍 Dual-Mode PDF Handling</h5>
+                                <p>Detects scanned vs. native PDFs by sampling 6 pages for raster coverage (&gt;80% =
+                                    scanned). Native PDFs use fast PyMuPDF extraction; scanned PDFs fall back to VLM
+                                    OCR.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>🎯 Colored Box Refinement</h5>
+                                <p>Detects figures inside shaded "Example" boxes by sampling corner pixels. The VLM then
+                                    identifies the tight diagram+caption bbox, excluding surrounding problem text.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>🧹 Global Figure Deduplication</h5>
+                                <p>Tracks extracted captions across all sections to prevent duplicate figure extraction.
+                                    Session-state caching survives Streamlit reruns.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>📐 Stateless VLM Execution</h5>
+                                <p>Each section gets a fresh VLM agent — no context contamination between sections.
+                                    Cache-backed responses prevent re-processing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Samples -->
+                    <div class="deep-section fade-in">
+                        <h3>Extraction Samples</h3>
+                        <div class="grid-3">
+                            <figure class="sample-fig">
+                                <img src="images/zones/section_12.2_p0_Full.png" alt="Full-width zone extraction">
+                                <figcaption>Full-width zone — single column</figcaption>
+                            </figure>
+                            <figure class="sample-fig">
+                                <img src="images/zones/section_12.3_p1_L.png" alt="Left column zone">
+                                <figcaption>Left column — two-column split</figcaption>
+                            </figure>
+                            <figure class="sample-fig">
+                                <img src="images/figures/FIG_122Demonstrating_Faradays_law.png" alt="Extracted figure">
+                                <figcaption>Extracted figure with VLM bbox</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- Output Theory -->
+                    <div class="deep-section fade-in">
+                        <h3>Output: Structured Extraction Data</h3>
+                        <p>The final output is a structured JSON document where each section is represented as an object
+                            containing its hierarchical ID, extracted title, the full LaTeX-transcribed text body, and a
+                            list of extracted figures with their file paths, captions, page numbers, and bounding-box
+                            coordinates. This preserves the complete <strong>section hierarchy</strong> of the original
+                            textbook, enabling downstream stages to reason about context (e.g., "this section comes
+                            after the introduction") and to correctly anchor figures to the concepts they illustrate.
+                        </p>
+                        <p>Every mathematical expression is embedded as LaTeX notation within the text body — inline
+                            formulas between single dollar signs and display equations between double dollar signs — so
+                            that downstream rendering engines (like Beamer) can compile them natively without any lossy
+                            conversion step.</p>
+                    </div>
+
+                </div><!-- /stage-body -->
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+         STAGE 02 — VIRTUAL PROFESSOR
+    ═══════════════════════════════════════ -->
+        <section id="stage-2" class="section stage-block stage-alt">
+            <div class="container">
+                <div class="stage-header fade-in">
+                    <div class="stage-number">02</div>
+                    <div>
+                        <h2 class="stage-title">Virtual Professor</h2>
+                        <p class="stage-subtitle">Pedagogical lesson planning &amp; narration scripting with multi-agent
+                            intelligence</p>
+                    </div>
+                </div>
+
+                <div class="stage-meta fade-in">
+                    <div class="meta-chip"><strong>The Dean:</strong> AllocationAgent</div>
+                    <div class="meta-chip"><strong>The Professor:</strong> OratorAgent</div>
+                    <div class="meta-chip"><strong>Orchestrator:</strong> VProfGenerator</div>
+                    <div class="meta-chip"><strong>Model:</strong> Gemini 2.5 Pro · CAMEL-AI · Pydantic</div>
+                </div>
+
+                <div class="stage-body">
+
+                    <div class="deep-section fade-in">
+                        <h3>How It Works</h3>
+                        <p>The V-Prof layer treats video generation as an <strong>instructional design problem</strong>,
+                            not simple summarization. Two specialized agents collaborate: the <strong>AllocationAgent
+                                ("The Dean")</strong> creates a strategic lesson plan, and the <strong>OratorAgent ("The
+                                Professor")</strong> writes extractive slide content plus conversational narration
+                            scripts.</p>
+                    </div>
+
+                    <!-- The Dean -->
+                    <div class="deep-section fade-in">
+                        <h3>The Dean — AllocationAgent</h3>
+                        <p>Analyzes each section <em>within the context of the full chapter outline</em> to make
+                            informed concept-budgeting decisions.</p>
+
+                        <div class="grid-2 mt-3">
+                            <div>
+                                <h5>What It Detects</h5>
+                                <ul class="check-list">
+                                    <li>Distinct technical concepts (1 slide minimum each)</li>
+                                    <li>Bold/italic vocabulary terms to preserve</li>
+                                    <li>Figure anchoring (each figure → a slide)</li>
+                                    <li>Worked examples ("Solve", "Calculate", "Example")</li>
+                                    <li>Mathematical formulas requiring dedicated slides</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5>Budgeting Rules</h5>
+                                <ul class="check-list">
+                                    <li>Overview sections → 1 slide</li>
+                                    <li>Standard sections (1–2 concepts) → 2–3 slides</li>
+                                    <li>Dense sections (3–5 concepts) → 4–8 slides</li>
+                                    <li>Very dense (6+ concepts) → 6–12+ slides</li>
+                                    <li><strong>NEVER drop concepts</strong> — coverage &gt; brevity</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="callout mt-3">
+                            <strong>Smart Chunking:</strong> Sections exceeding 3,500 words or 5 pages are automatically
+                            split into logical chunks (by subsection headers, ~1000-word paragraphs, or figure anchors)
+                            to prevent LLM truncation and JSON parsing failures.
+                        </div>
+                    </div>
+
+                    <!-- The Professor -->
+                    <div class="deep-section fade-in">
+                        <h3>The Professor — OratorAgent</h3>
+                        <p>Transforms allocated concepts into polished slide content with two distinct output streams:
+                        </p>
+
+                        <div class="grid-2 mt-3">
+                            <div class="mini-card">
+                                <h5>📊 Slide Visuals (Extractive)</h5>
+                                <p>Exact sentences from the source text. <strong>Zero paraphrasing</strong> — 100%
+                                    extractive to prevent AI hallucination of technical content. LaTeX math preserved
+                                    verbatim (<code>$E = mc^2$</code>).</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>🎙️ Professor Script (Conversational)</h5>
+                                <p>YouTube/Computerphile-style narration. Plain text only — "E equals m c squared", not
+                                    <code>$E = mc^2$</code>. History-aware to prevent repetition across consecutive
+                                    slides.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layout Types -->
+                    <div class="deep-section fade-in">
+                        <h3>10 Supported Layout Types</h3>
+                        <div class="layout-grid">
+                            <div class="layout-chip">BulletPoints</div>
+                            <div class="layout-chip">SingleText</div>
+                            <div class="layout-chip">Formula</div>
+                            <div class="layout-chip">Mixed_Horizontal</div>
+                            <div class="layout-chip">Mixed_Vertical</div>
+                            <div class="layout-chip">Single_Figure</div>
+                            <div class="layout-chip">WorkedExample</div>
+                            <div class="layout-chip">ExampleQuestion</div>
+                            <div class="layout-chip">ExampleSolution</div>
+                            <div class="layout-chip">ComparisonTable</div>
+                        </div>
+                        <p class="mt-2 text-sm text-muted">Layout is selected based on content type: equations get
+                            <code>Formula</code>, figure+text gets <code>Mixed_Horizontal</code> or
+                            <code>Mixed_Vertical</code>, and step-by-step solutions get <code>ExampleSolution</code> (4
+                            steps per slide max).
+                        </p>
+                    </div>
+
+                    <!-- Output Theory -->
+                    <div class="deep-section fade-in">
+                        <h3>Output: Presentation Blueprint (PPT JSON)</h3>
+                        <p>The Virtual Professor's output is a structured presentation blueprint — a JSON file that
+                            encodes every slide in the planned lecture. Each slide object carries its <strong>concept
+                                title</strong>, the selected <strong>layout type</strong> (e.g., BulletPoints,
+                            Mixed_Horizontal, Formula), an array of <strong>extractive bullet points</strong> copied
+                            verbatim from the source, an optional <strong>figure path</strong>, a <strong>professor
+                                script</strong> written in plain conversational English, and a <strong>transition
+                                sentence</strong> that connects to the next slide.</p>
+                        <p>This blueprint acts as a formal <strong>data contract</strong> between the pedagogical layer
+                            and the downstream Slide Builder. Because every field is strictly defined — visuals contain
+                            LaTeX while scripts contain spoken-word text — the downstream compiler can process each
+                            independently without ambiguity. The separation of concerns also means the same blueprint
+                            could be rendered into different output formats (PowerPoint, HTML slides, or Beamer) without
+                            any changes to the pedagogical engine.</p>
+                    </div>
+
+                    <!-- Design Principles -->
+                    <div class="deep-section fade-in">
+                        <h3>Anti-Hallucination by Design</h3>
+                        <p>A core design principle of the Virtual Professor is its <strong>100% extractive</strong>
+                            approach to slide content. Rather than asking the LLM to "summarize" or "explain" a concept
+                            — which risks hallucinated technical details — the system instructs the OratorAgent to
+                            select exact sentences and phrases from the source material. This extractive constraint
+                            ensures that every bullet point on a slide is a verbatim quote from the textbook, preserving
+                            the precision of mathematical definitions and technical terminology.</p>
+                        <p>The conversational narration script is the only generative output, and it is clearly
+                            separated from the visual content. Even in the script, the OratorAgent is constrained to
+                            <strong>explain</strong> concepts rather than introduce new information, and it tracks a
+                            rolling history of previous slides to prevent redundancy across consecutive narrations.
+                        </p>
+                    </div>
+
+                </div><!-- /stage-body -->
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+         STAGE 03 — SLIDE BUILDER
+    ═══════════════════════════════════════ -->
+        <section id="stage-3" class="section stage-block">
+            <div class="container">
+                <div class="stage-header fade-in">
+                    <div class="stage-number">03</div>
+                    <div>
+                        <h2 class="stage-title">Slide Builder</h2>
+                        <p class="stage-subtitle">Self-correcting LaTeX Beamer generation with VLM-guided layout
+                            optimization</p>
+                    </div>
+                </div>
+
+                <div class="stage-meta fade-in">
+                    <div class="meta-chip"><strong>Orchestrator:</strong> VProfSliderBuilder</div>
+                    <div class="meta-chip"><strong>LaTeX Expert:</strong> CoderAgent</div>
+                    <div class="meta-chip"><strong>Layout Judge:</strong> Gemini 3 Pro VLM</div>
+                    <div class="meta-chip"><strong>Compiler:</strong> pdflatex · Beamer · amsmath</div>
+                </div>
+
+                <div class="stage-body">
+
+                    <div class="deep-section fade-in">
+                        <h3>How It Works</h3>
+                        <p>The Slide Builder transforms PPT JSON into a compilable <code>.tex</code> file. A specialized
+                            <strong>CoderAgent</strong> (powered by Gemini 2.5 Pro) generates LaTeX Beamer frames for
+                            each slide. If a slide contains a figure, the system generates <em>two layout variants</em>
+                            (Horizontal and Vertical) and lets a <strong>Gemini 3 Pro VLM judge</strong> pick the
+                            winner.
+                        </p>
+
+                        <div class="step-list mt-3">
+                            <div class="step">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <strong>System Slide Injection</strong>
+                                    <p>Auto-detects missing Title and Table-of-Contents slides. Injects them with
+                                        VLM-generated narration scripts.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <strong>LaTeX Sanitization</strong>
+                                    <p>Recursively escapes special characters (<code>&amp;</code>, <code>%</code>,
+                                        <code>_</code>, <code>#</code>) while preserving math mode integrity. Figure
+                                        paths are exempt — underscores in filenames must remain unescaped.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <strong>Binary VLM Layout Judge</strong>
+                                    <p>For figure slides: CoderAgent generates Variant A (Horizontal) and Variant B
+                                        (Vertical). Both are compiled to images and placed in a 2×1 comparison grid.
+                                        Gemini 3 Pro inspects the grid and returns <code>{"choice": "A"}</code> or
+                                        <code>{"choice": "B"}</code>.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">4</div>
+                                <div class="step-content">
+                                    <strong>Self-Correction Loop (3 retries)</strong>
+                                    <p><code>pdflatex</code> runs in <code>-nonstopmode</code>. If it fails, the log is
+                                        parsed to extract error line numbers, which are mapped to specific frames via
+                                        tracked line ranges. The CoderAgent fixes only the broken frame — no collateral
+                                        changes.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">5</div>
+                                <div class="step-content">
+                                    <strong>Stage 4 Artifact Extraction</strong>
+                                    <p>The compiled PDF is split into per-slide PNG images at 300 DPI using PyMuPDF.
+                                        Narration scripts are saved as individual <code>.txt</code> files. A master
+                                        <code>ppt_mapping.json</code> links everything.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CoderAgent Design Principles -->
+                    <div class="deep-section fade-in">
+                        <h3>CoderAgent Design Principles</h3>
+                        <div class="grid-2">
+                            <div class="mini-card">
+                                <h5>✂️ No Animations</h5>
+                                <p>Strips all <code>\pause</code>, <code>[&lt;+-&gt;]</code>, and overlay commands.
+                                    Every frame is a single static slide — critical for PNG extraction.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>📏 Font Scaling</h5>
+                                <p>Mandatory scaling: &gt;150-char bullets use <code>\footnotesize</code>.
+                                    Mixed_Vertical with 3+ bullets drops to <code>\scriptsize</code>. Prevents overflow.
+                                </p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>🎨 Professional Theme</h5>
+                                <p>Solid blue header bar, no navigation dots, rounded title boxes, high-contrast
+                                    typography via Madrid Beamer theme.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>🛡️ Footer Safety Zone</h5>
+                                <p>Ensures 0.8em empty space before <code>\end{frame}</code>. The VLM judge disqualifies
+                                    any variant where content touches the footer bar.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Generated Slide Samples -->
+                    <div class="deep-section fade-in">
+                        <h3>Generated Slides</h3>
+                        <div class="grid-3">
+                            <figure class="sample-fig">
+                                <img src="images/slides/figureSlide1.png" alt="Title Slide">
+                                <figcaption>Title Slide</figcaption>
+                            </figure>
+                            <figure class="sample-fig">
+                                <img src="images/slides/figureSlide5.png" alt="Bullet Points Slide">
+                                <figcaption>BulletPoints layout</figcaption>
+                            </figure>
+                            <figure class="sample-fig">
+                                <img src="images/slides/figureSlide10.png" alt="Mixed Horizontal Slide">
+                                <figcaption>Mixed_Horizontal layout</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                </div><!-- /stage-body -->
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+         STAGE 04 — VIDEO BUILDER
+    ═══════════════════════════════════════ -->
+        <section id="stage-4" class="section stage-block stage-alt">
+            <div class="container">
+                <div class="stage-header fade-in">
+                    <div class="stage-number">04</div>
+                    <div>
+                        <h2 class="stage-title">Video Builder</h2>
+                        <p class="stage-subtitle">Bit-perfect audio-visual synchronization with neural text-to-speech
+                        </p>
+                    </div>
+                </div>
+
+                <div class="stage-meta fade-in">
+                    <div class="meta-chip"><strong>Engine:</strong> VProfVideoEngine</div>
+                    <div class="meta-chip"><strong>TTS:</strong> VProfVoiceGenerator</div>
+                    <div class="meta-chip"><strong>Stack:</strong> Edge-TTS · MoviePy (v1/v2) · FFmpeg</div>
+                    <div class="meta-chip"><strong>Output:</strong> 1080p MP4 · H.264 + AAC · 24 FPS</div>
+                </div>
+
+                <div class="stage-body">
+
+                    <div class="deep-section fade-in">
+                        <h3>How It Works</h3>
+                        <p>The final stage marries visuals with speech. For each slide in the
+                            <code>ppt_mapping.json</code>, the engine reads the script text, generates an MP3 via
+                            <strong>Microsoft Edge-TTS</strong> neural voices, then creates a MoviePy
+                            <code>ImageClip</code> whose duration is set to <em>exactly</em> the audio clip's duration.
+                            This guarantees <strong>zero drift</strong> across the entire video.
+                        </p>
+
+                        <div class="step-list mt-3">
+                            <div class="step">
+                                <div class="step-num">1</div>
+                                <div class="step-content">
+                                    <strong>Script Loading &amp; Validation</strong>
+                                    <p>Reads each <code>scriptN.txt</code> file. Empty scripts are silently skipped
+                                        (coverage-first design — partial output over crashes).</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">2</div>
+                                <div class="step-content">
+                                    <strong>Edge-TTS Audio Generation</strong>
+                                    <p>Text is sent to Microsoft's Edge Read Aloud API via
+                                        <code>edge_tts.Communicate()</code>. The async engine streams MP3 chunks back
+                                        and saves the complete audio file. Default voice:
+                                        <code>en-US-AndrewNeural</code>.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">3</div>
+                                <div class="step-content">
+                                    <strong>Synchronized Clip Assembly</strong>
+                                    <p>For each slide: <code>ImageClip(img)</code> →
+                                        <code>set_duration(audio.duration)</code> → <code>set_audio(audio)</code> →
+                                        <code>resize(height=1080)</code>. Duration is measured from the actual MP3 file,
+                                        not estimated from text length.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-num">4</div>
+                                <div class="step-content">
+                                    <strong>Concatenation &amp; Render</strong>
+                                    <p><code>concatenate_videoclips(clips, method="compose")</code> chains all clips
+                                        sequentially. FFmpeg encodes the final MP4 with H.264 video and AAC audio at 24
+                                        FPS. Compose method handles mixed clip sizes gracefully.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Details -->
+                    <div class="deep-section fade-in">
+                        <h3>Technical Details</h3>
+                        <div class="grid-2">
+                            <div class="mini-card">
+                                <h5>🔄 Cross-Version MoviePy</h5>
+                                <p>Dual import path: tries <code>moviepy.editor</code> (v1) then <code>moviepy</code>
+                                    (v2). Runtime <code>hasattr</code> detection handles API renames:
+                                    <code>set_duration</code> → <code>with_duration</code>, <code>resize</code> →
+                                    <code>resized</code>.
+                                </p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>⏱️ Timing Precision</h5>
+                                <p>Audio duration is a float in seconds (e.g., 12.47s). At 24 FPS, each frame = ~42ms.
+                                    Sub-frame audio durations are handled by MoviePy's internal audio mixing —
+                                    imperceptible precision.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>🎤 Voice Catalog</h5>
+                                <p>400+ neural voices across 100+ locales. Recommended: <code>en-US-AndrewNeural</code>
+                                    (professional male), <code>en-US-JennyNeural</code> (friendly female),
+                                    <code>en-GB-RyanNeural</code> (academic British).
+                                </p>
+                            </div>
+                            <div class="mini-card">
+                                <h5>💰 Free &amp; Unlimited</h5>
+                                <p>Edge-TTS requires <strong>no API key</strong>, no subscription, and has no rate
+                                    limits for typical lecture workloads. Same neural engine used by Microsoft Edge
+                                    browser.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Render Specs -->
+                    <div class="deep-section fade-in">
+                        <h3>Render Specifications</h3>
+                        <div class="specs-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Value</th>
+                                        <th>Rationale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Resolution</td>
+                                        <td>1080p height</td>
+                                        <td>Full HD standard for all modern displays</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Frame Rate</td>
+                                        <td>24 FPS</td>
+                                        <td>Standard lecture framerate; sufficient for static slides</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Video Codec</td>
+                                        <td>libx264 (H.264)</td>
+                                        <td>Universal compatibility, hardware decode on all platforms</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Audio Codec</td>
+                                        <td>AAC</td>
+                                        <td>MP4 standard, transparent quality at lecture bitrates</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Concatenation</td>
+                                        <td>compose</td>
+                                        <td>Handles mixed clip sizes; no dimension assumptions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Duration</td>
+                                        <td>Σ audio durations</td>
+                                        <td>No padding, no transitions, no black frames</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div><!-- /stage-body -->
+            </div>
+        </section>
+
+        <!-- ═══ VIDEO SHOWCASE ═══ -->
+        <section id="gallery" class="section section-dark">
+            <div class="container">
+                <div class="section-label fade-in">VIDEO SHOWCASE</div>
+                <h2 class="section-title fade-in">Multi-Disciplinary Generation</h2>
+                <p class="section-desc fade-in">Chapter2Video handles deeply complex academic material across
+                    engineering and computer science. Browse our generated video samples below.</p>
+
+                <div class="carousel-wrapper fade-in">
+                    <!-- Left Arrow -->
+                    <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-track" id="videoCarousel">
+
+                        <!-- Subject: Microelectronics Part 1 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/1mkZSOirx7ESzDJIMnNnACXLypYkdhx0m/preview"
+                                    allow="autoplay"></iframe>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Microelectronics</span>
+                                <h3 class="video-caption">Semiconductors: Part 1</h3>
+                            </div>
+                        </div>
+
+                        <!-- Subject: Microelectronics Part 2 -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://drive.google.com/file/d/1T-Hx2QPXWIn9fkzgSQ4sdzugX7k4RusW/preview"
+                                    allow="autoplay"></iframe>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Microelectronics</span>
+                                <h3 class="video-caption">Semiconductors: Part 2</h3>
+                            </div>
+                        </div>
+
+                        <!-- Subject: Computer Organization -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <!-- Using embed folder view -->
+                                <iframe src="https://drive.google.com/file/d/12qoKGwUL-x7PZaayIa11poravlbrvRWd/preview"
+                                    allow="autoplay"></iframe>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Computer Organization</span>
+                                <h3 class="video-caption">Processing Unit Design</h3>
+                            </div>
+                        </div>
+
+                        <!-- Subject: OS -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <!-- Using embed folder view -->
+                                <iframe src="https://drive.google.com/file/d/1t_VkdsR_crNMnXXyokKGuWhh8fmMdwUf/preview"
+                                    allow="autoplay"></iframe>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">operating System</span>
+                                <h3 class="video-caption">Mutual Exclusion</h3>
+                            </div>
+                        </div>
+
+                        <!-- Subject: Operating Systems -->
+                        <!-- <div class="video-card">
+                            <div class="video-wrapper">
+                                <div
+                                    style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--fg-muted);">
+                                    <em>Placeholder: Upload to Drive</em>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Operating Systems</span>
+                                <h3 class="video-caption">Memory Management</h3>
+                            </div>
+                        </div> -->
+
+
+                        <!-- Subject: OS -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <!-- Using embed folder view -->
+                                <iframe src="https://drive.google.com/file/d/1kSSyKf-0a4N2HWMFqztxb_ivMKWw0Jz9/preview"
+                                    allow="autoplay"></iframe>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Circuits</span>
+                                <h3 class="video-caption">AC Analysis &amp; Inductors</h3>
+                            </div>
+                        </div>
+
+                        <!-- Subject: Circuits
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <div
+                                    style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--fg-muted);">
+                                    <em>Placeholder: Upload to Drive</em>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Circuits</span>
+                                <h3 class="video-caption">AC Analysis &amp; Inductors</h3>
+                            </div>
+                        </div> -->
+
+                        <!-- Subject: Wireless Communication -->
+                        <!-- <div class="video-card">
+                            <div class="video-wrapper">
+                                <div
+                                    style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--fg-muted);">
+                                    <em>Placeholder: Upload to Drive</em>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Wireless Communication</span>
+                                <h3 class="video-caption">Signal Modulation</h3>
+                            </div>
+                        </div>
+
+                    </div> -->
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <!-- Using embed folder view -->
+                                <iframe src="https://drive.google.com/file/d/1wViEZzGmoIuEzUJ9CJN-1GHlgPnkq89r/preview"
+                                    allow="autoplay"></iframe>
+                            </div>
+                            <div class="video-info">
+                                <span class="video-badge">Wireless Communication</span>
+                                <h3 class="video-caption">Signal Modulations</h3>
+                            </div>
+                        </div>
+
+                        <!-- Right Arrow -->
+                        <button class="carousel-btn next" onclick="scrollCarousel(1)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+        </section>
+
+        <!-- ═══ QUICKSTART ═══ -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label fade-in">GET STARTED</div>
+                <h2 class="section-title fade-in">Quick Start</h2>
+                <p class="section-desc fade-in">Getting Chapter2Video running requires four main prerequisites. Detailed
+                    installation instructions are available in the GitHub repository README.</p>
+
+                <div class="step-list mt-4 fade-in">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong>Clone the Repository</strong>
+                            <p>Download the complete Chapter2Video source code from GitHub, including all agent modules,
+                                templates, and the Streamlit application.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong>Install Python Dependencies</strong>
+                            <p>The pipeline requires PyMuPDF for PDF processing, Pillow for image manipulation, CAMEL-AI
+                                for multi-agent orchestration, Edge-TTS for speech synthesis, and MoviePy for video
+                                composition.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong>Install LaTeX (texlive-full)</strong>
+                            <p>The Slide Builder compiles Beamer presentations using pdflatex. A full TeX Live
+                                installation is recommended to ensure all required packages (amsmath, graphicx, beamer)
+                                are available.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <strong>Configure Your Gemini API Key</strong>
+                            <p>Create a .env file with your Google Gemini API key. The pipeline uses Gemini 2.5 Pro for
+                                VLM transcription, concept allocation, and slide generation across all four stages.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <strong>Launch the Streamlit App</strong>
+                            <p>Start the web interface to upload your PDF and index file, monitor pipeline progress in
+                                real-time, and preview the generated slides and final video.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CTA ═══ -->
+        <section class="section section-cta">
+            <div class="container text-center">
+                <div class="glass-card fade-in"
+                    style="max-width: 800px; margin: 0 auto; padding: 48px; border-radius: var(--radius-lg); text-align: center;">
+                    <h2 class="section-title">Repository Will Be Public Soon!</h2>
+                    <p class="section-desc" style="margin: 0 auto 24px auto;">We are finalizing the Chapter2Video source
+                        code for public release.</p>
+
+                    <div
+                        style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-top: 32px;">
+                        <p style="color: var(--fg-muted); margin-bottom: 24px; font-size: 1.05rem;">If you need to
+                            convert a chapter to a video right now, please send an email with the subject
+                            <strong>[Chapter2Video Conversion]</strong> to our team.
+                        </p>
+                        <div class="cta-buttons">
+                            <a href="mailto:mohamed.gomaa.elsafy@gmail.com?subject=[Chapter2Video Conversion]"
+                                class="btn btn-lg btn-primary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    style="vertical-align:-4px; margin-right: 8px;">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                Contact Us via Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="site-footer">
+        <div class="container text-center">
+            <p>Chapter2Video — Solving the Content-to-Classroom bottleneck.</p>
+            <p class="text-sm text-muted mt-1">&copy; 2026 Mohamed Gomaa. MIT License · Powered by Gemini VLM &amp;
+                CAMEL-AI</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Enlarged slide">
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
