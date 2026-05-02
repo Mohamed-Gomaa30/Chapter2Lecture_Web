@@ -1,0 +1,22 @@
+{
+  "ratings": [
+    {
+      "id": "1",
+      "rating": 5,
+      "comment": "Excellent tool! Makes video generation effortless.",
+      "timestamp": "2026-04-28T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "rating": 4,
+      "comment": "Great pipeline, very useful for academic content.",
+      "timestamp": "2026-04-29T15:45:00Z"
+    },
+    {
+      "id": "3",
+      "rating": 5,
+      "comment": "Amazing quality and easy to use!",
+      "timestamp": "2026-05-01T08:20:00Z"
+    }
+  ]
+}

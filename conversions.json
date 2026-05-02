@@ -1,0 +1,13 @@
+{
+  "conversions": [
+    {
+      "id": "1",
+      "name": "Example User",
+      "email": "user@example.com",
+      "subject": "Microelectronics",
+      "chapter": "Chapter 12 - Inductors",
+      "notes": "Please use English voice",
+      "timestamp": "2026-05-01T10:00:00Z"
+    }
+  ]
+}

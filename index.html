@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Google Forms + Google Sheets is the free backend for GitHub Pages -->
 </head>
 
 <body>
@@ -29,14 +30,9 @@
                 <a href="#pipeline">Pipeline</a>
                 <a href="#stage-1">Stages</a>
                 <a href="#gallery">Gallery</a>
-                <a href="https://github.com/your-repo/Chapter2Video" target="_blank" class="btn btn-sm btn-white">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"
-                        style="vertical-align:-3px;margin-right:6px;">
-                        <path
-                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-                    </svg>
-                    GitHub
-                </a>
+                <a href="#convert">Convert</a>
+                
+                
             </nav>
             <button class="mobile-toggle" aria-label="Menu">☰</button>
         </div>
@@ -782,145 +778,313 @@
                 <p class="section-desc fade-in">Chapter2Video handles deeply complex academic material across
                     engineering and computer science. Browse our generated video samples below.</p>
 
-                <div class="carousel-wrapper fade-in">
-                    <!-- Left Arrow -->
-                    <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <div class="carousel-track" id="videoCarousel">
-
-                        <!-- Subject: Microelectronics Part 1 -->
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <iframe src="https://drive.google.com/file/d/1mkZSOirx7ESzDJIMnNnACXLypYkdhx0m/preview"
-                                    allow="autoplay"></iframe>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Microelectronics</span>
-                                <h3 class="video-caption">Semiconductors: Part 1</h3>
-                            </div>
-                        </div>
-
-                        <!-- Subject: Microelectronics Part 2 -->
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <iframe src="https://drive.google.com/file/d/1T-Hx2QPXWIn9fkzgSQ4sdzugX7k4RusW/preview"
-                                    allow="autoplay"></iframe>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Microelectronics</span>
-                                <h3 class="video-caption">Semiconductors: Part 2</h3>
-                            </div>
-                        </div>
-
-                        <!-- Subject: Computer Organization -->
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <!-- Using embed folder view -->
-                                <iframe src="https://drive.google.com/file/d/12qoKGwUL-x7PZaayIa11poravlbrvRWd/preview"
-                                    allow="autoplay"></iframe>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Computer Organization</span>
-                                <h3 class="video-caption">Processing Unit Design</h3>
-                            </div>
-                        </div>
-
-                        <!-- Subject: OS -->
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <!-- Using embed folder view -->
-                                <iframe src="https://drive.google.com/file/d/1t_VkdsR_crNMnXXyokKGuWhh8fmMdwUf/preview"
-                                    allow="autoplay"></iframe>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">operating System</span>
-                                <h3 class="video-caption">Mutual Exclusion</h3>
-                            </div>
-                        </div>
-
-                        <!-- Subject: Operating Systems -->
-                        <!-- <div class="video-card">
-                            <div class="video-wrapper">
-                                <div
-                                    style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--fg-muted);">
-                                    <em>Placeholder: Upload to Drive</em>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Operating Systems</span>
-                                <h3 class="video-caption">Memory Management</h3>
-                            </div>
-                        </div> -->
-
-
-                        <!-- Subject: OS -->
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <!-- Using embed folder view -->
-                                <iframe src="https://drive.google.com/file/d/1kSSyKf-0a4N2HWMFqztxb_ivMKWw0Jz9/preview"
-                                    allow="autoplay"></iframe>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Circuits</span>
-                                <h3 class="video-caption">AC Analysis &amp; Inductors</h3>
-                            </div>
-                        </div>
-
-                        <!-- Subject: Circuits
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <div
-                                    style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--fg-muted);">
-                                    <em>Placeholder: Upload to Drive</em>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Circuits</span>
-                                <h3 class="video-caption">AC Analysis &amp; Inductors</h3>
-                            </div>
-                        </div> -->
-
-                        <!-- Subject: Wireless Communication -->
-                        <!-- <div class="video-card">
-                            <div class="video-wrapper">
-                                <div
-                                    style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--fg-muted);">
-                                    <em>Placeholder: Upload to Drive</em>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Wireless Communication</span>
-                                <h3 class="video-caption">Signal Modulation</h3>
-                            </div>
-                        </div>
-
-                    </div> -->
-                        <div class="video-card">
-                            <div class="video-wrapper">
-                                <!-- Using embed folder view -->
-                                <iframe src="https://drive.google.com/file/d/1wViEZzGmoIuEzUJ9CJN-1GHlgPnkq89r/preview"
-                                    allow="autoplay"></iframe>
-                            </div>
-                            <div class="video-info">
-                                <span class="video-badge">Wireless Communication</span>
-                                <h3 class="video-caption">Signal Modulations</h3>
-                            </div>
-                        </div>
-
-                        <!-- Right Arrow -->
-                        <button class="carousel-btn next" onclick="scrollCarousel(1)">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </button>
-                    </div>
+                <div class="showcase-grid-wrapper fade-in" style="margin-top: 2rem;">
+    <!-- Row for Semiconductors: Part 1 -->
+    <div class="showcase-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+        
+        <!-- Left: Course Materials (PPT embedded) -->
+        <div class="video-card">
+            
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/13w-dg4ZBL3l3dl6Gw3ezlw6KBuBnL5Cu/preview" allow="autoplay"></iframe>
+            </div>
+        
+            <div class="video-info">
+                <span class="video-badge">Microelectronics</span>
+                <h3 class="video-caption">Semiconductors: Part 1 - Presentation</h3>
+                <div class="rating-widget" data-video-id="microelectronics-p1-materials">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
                 </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Video -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1mkZSOirx7ESzDJIMnNnACXLypYkdhx0m/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="video-info">
+                <span class="video-badge">Microelectronics</span>
+                <h3 class="video-caption">Semiconductors: Part 1 - Lecture Video</h3>
+                <div class="rating-widget" data-video-id="microelectronics-p1">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Row for Semiconductors: Part 2 -->
+    <div class="showcase-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+        
+        <!-- Left: Course Materials (PPT embedded) -->
+        <div class="video-card">
+            
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1SL_PevHdChVo503YPArHLmnoXJjVju8u/preview" allow="autoplay"></iframe>
+            </div>
+        
+            <div class="video-info">
+                <span class="video-badge">Microelectronics</span>
+                <h3 class="video-caption">Semiconductors: Part 2 - Presentation</h3>
+                <div class="rating-widget" data-video-id="microelectronics-p2-materials">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Video -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1T-Hx2QPXWIn9fkzgSQ4sdzugX7k4RusW/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="video-info">
+                <span class="video-badge">Microelectronics</span>
+                <h3 class="video-caption">Semiconductors: Part 2 - Lecture Video</h3>
+                <div class="rating-widget" data-video-id="microelectronics-p2">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Row for Processing Unit Design -->
+    <div class="showcase-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+        
+        <!-- Left: Course Materials (PPT embedded) -->
+        <div class="video-card">
+            
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/19FNF67LewY74yyuGnZaELuxOuCH9rhbL/preview" allow="autoplay"></iframe>
+            </div>
+        
+            <div class="video-info">
+                <span class="video-badge">Computer Organization</span>
+                <h3 class="video-caption">Processing Unit Design - Presentation</h3>
+                <div class="rating-widget" data-video-id="computer-org-materials">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Video -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/12qoKGwUL-x7PZaayIa11poravlbrvRWd/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="video-info">
+                <span class="video-badge">Computer Organization</span>
+                <h3 class="video-caption">Processing Unit Design - Lecture Video</h3>
+                <div class="rating-widget" data-video-id="computer-org">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Row for Mutual Exclusion -->
+    <div class="showcase-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+        
+        <!-- Left: Course Materials (PPT embedded) -->
+        <div class="video-card">
+            
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1jXDS0FbEU9AJGERz32l9gpvDnyQ07y0l/preview" allow="autoplay"></iframe>
+            </div>
+        
+            <div class="video-info">
+                <span class="video-badge">Operating System</span>
+                <h3 class="video-caption">Mutual Exclusion - Presentation</h3>
+                <div class="rating-widget" data-video-id="os-mutual-excl-materials">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Video -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1t_VkdsR_crNMnXXyokKGuWhh8fmMdwUf/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="video-info">
+                <span class="video-badge">Operating System</span>
+                <h3 class="video-caption">Mutual Exclusion - Lecture Video</h3>
+                <div class="rating-widget" data-video-id="os-mutual-excl">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Row for AC Analysis & Inductors -->
+    <div class="showcase-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+        
+        <!-- Left: Course Materials (PPT embedded) -->
+        <div class="video-card">
+            
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1UcDrMyjdFtL04R6f4cRkx89RuwMzjNyk/preview" allow="autoplay"></iframe>
+            </div>
+        
+            <div class="video-info">
+                <span class="video-badge">Circuits</span>
+                <h3 class="video-caption">AC Analysis & Inductors - Presentation</h3>
+                <div class="rating-widget" data-video-id="circuits-ac-materials">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Video -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1kSSyKf-0a4N2HWMFqztxb_ivMKWw0Jz9/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="video-info">
+                <span class="video-badge">Circuits</span>
+                <h3 class="video-caption">AC Analysis & Inductors - Lecture Video</h3>
+                <div class="rating-widget" data-video-id="circuits-ac">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Row for Signal Modulations -->
+    <div class="showcase-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+        
+        <!-- Left: Course Materials (PPT embedded) -->
+        <div class="video-card">
+            
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1Y3dvIs7WogqUIB6CAwKvqvzKjSmM3l32/preview" allow="autoplay"></iframe>
+            </div>
+        
+            <div class="video-info">
+                <span class="video-badge">Wireless Communication</span>
+                <h3 class="video-caption">Signal Modulations - Presentation</h3>
+                <div class="rating-widget" data-video-id="wireless-signal-materials">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Video -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/1wViEZzGmoIuEzUJ9CJN-1GHlgPnkq89r/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="video-info">
+                <span class="video-badge">Wireless Communication</span>
+                <h3 class="video-caption">Signal Modulations - Lecture Video</h3>
+                <div class="rating-widget" data-video-id="wireless-signal">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="rating-info"></span>
+                </div>
+                <div class="rating-chart-wrapper" style="position:relative; width:100%; height:100px; margin-top:8px;">
+                    <canvas class="rating-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Right Arrow --><!-- carousel btns removed --></div>
         </section>
 
         <!-- ═══ QUICKSTART ═══ -->
@@ -979,56 +1143,40 @@
         </section>
 
         <!-- ═══ CTA ═══ -->
-        <section class="section section-cta">
-            <div class="container text-center">
-                <div class="glass-card fade-in"
-                    style="max-width: 800px; margin: 0 auto; padding: 48px; border-radius: var(--radius-lg); text-align: center;">
-                    <h2 class="section-title">Repository Will Be Public Soon!</h2>
-                    <p class="section-desc" style="margin: 0 auto 24px auto;">We are finalizing the Chapter2Video source
-                        code for public release.</p>
+        <section id="convert" class="section section-cta">
+            <div class="container">
+                <div class="section-label fade-in">CONVERT YOUR CHAPTER</div>
+                <h2 class="section-title fade-in">Request a Chapter-to-Video Conversion</h2>
+                <p class="section-desc fade-in">Have a textbook chapter you want turned into a professional narrated
+                    video lecture? Send it to us directly via email and our team will process it using the Chapter2Video
+                    pipeline.</p>
 
-                    <div
-                        style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-top: 32px;">
-                        <p style="color: var(--fg-muted); margin-bottom: 24px; font-size: 1.05rem;">If you need to
-                            convert a chapter to a video right now, please send an email with the subject
-                            <strong>[Chapter2Video Conversion]</strong> to our team.
-                        </p>
-                        <div class="cta-buttons">
-                            <a href="mailto:mohamed.gomaa.elsafy@gmail.com?subject=[Chapter2Video Conversion]"
-                                class="btn btn-lg btn-primary">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                    style="vertical-align:-4px; margin-right: 8px;">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                    </path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                                Contact Us via Email
-                            </a>
-                        </div>
-                    </div>
+                <div class="convert-alt fade-in" style="text-align: center; margin-top: 2rem;">
+                    <a href="mailto:mohamed.gomaa.elsafy@gmail.com?subject=[Chapter2Video Conversion]"
+                        class="btn btn-lg btn-primary">
+                        📧 Send Chapter to mohamed.gomaa.elsafy@gmail.com
+                    </a>
                 </div>
             </div>
         </section>
 
-    </main>
+        
 
-    <!-- ═══ FOOTER ═══ -->
-    <footer class="site-footer">
-        <div class="container text-center">
-            <p>Chapter2Video — Solving the Content-to-Classroom bottleneck.</p>
-            <p class="text-sm text-muted mt-1">&copy; 2026 Mohamed Gomaa. MIT License · Powered by Gemini VLM &amp;
-                CAMEL-AI</p>
+        <!-- ═══ FOOTER ═══ -->
+        <footer class="site-footer">
+            <div class="container text-center">
+                <p>Chapter2Video — Solving the Content-to-Classroom bottleneck.</p>
+                <p class="text-sm text-muted mt-1">&copy; 2026 Mohamed Gomaa. MIT License · Powered by Gemini VLM &amp;
+                    CAMEL-AI</p>
+            </div>
+        </footer>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <img id="lightbox-img" src="" alt="Enlarged slide">
         </div>
-    </footer>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" alt="Enlarged slide">
-    </div>
-
-    <script src="js/main.js"></script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>
